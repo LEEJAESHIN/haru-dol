@@ -2,6 +2,7 @@
 import Intersect from "@/components/cores/intersect"
 import Instagram from "@/components/instagram";
 import KaKaomap from "@/components/kakaomap";
+import Calender from "@/components/calender";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         <Intersect>
           <div className="text-center">
             <div className='font-serif mt-4 text-sm text-gy-6 leading-7'>
-              2025년 1월 18일 수요일 오후1시
+              2025년 1월 18일 토요일 오후1시
               <br />
               판교 루나드블랑
             </div>
@@ -58,6 +59,7 @@ export default function Home() {
         <Intersect className="mt-20">
           <KaKaomap />
         </Intersect>
+
         <Intersect>
           <div className="mt-8 font-serif mx-8">
             <span className="text-sm">경기 성남시 분당구 하오개로351번길 18<br /></span>
@@ -89,6 +91,10 @@ export default function Home() {
               만차 시 제2주차장으로 안내해 드릴 수 있으니 여유롭게 도착하셔서 안내 받으시기를 바랍니다.
             </div>
           </div>
+        </Intersect>
+
+        <Intersect className="mt-8">
+          <Calender />
         </Intersect>
       </section>
     </main>
