@@ -3,12 +3,14 @@ import Intersect from "@/components/cores/intersect"
 import Instagram from "@/components/instagram";
 import KaKaomap from "@/components/kakaomap";
 import Calender from "@/components/calender";
+import GuestBookDlg from "@/components/guestBook-dialog";
+import GusetBook from "@/components/guestbook"
 
 export default function Home() {
   return (
     <main className="container">
       <section>
-        <div className="font-serif_en text-center text-xl mt-20">1st birthday</div>
+        {/* <div className="font-serif_en text-center text-xl mt-20">1st birthday</div>
         <div className="font-serif text-center text-xl text-blue-500">하루의 첫번째 생일</div>
         <div className='mt-10'>
           <img
@@ -91,11 +93,13 @@ export default function Home() {
               만차 시 제2주차장으로 안내해 드릴 수 있으니 여유롭게 도착하셔서 안내 받으시기를 바랍니다.
             </div>
           </div>
-        </Intersect>
+        </Intersect> */}
 
-        <Intersect className="mt-8">
+        {/* <Intersect className="mt-8">
           <Calender />
-        </Intersect>
+        </Intersect> */}
+        <GuestBookDlg />
+        <GusetBook />
       </section>
     </main>
   );
