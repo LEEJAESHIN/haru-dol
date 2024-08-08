@@ -3,8 +3,8 @@ import Intersect from "@/components/cores/intersect"
 import Instagram from "@/components/instagram";
 import KaKaomap from "@/components/kakaomap";
 import Calender from "@/components/calender";
-import GuestBookDlg from "@/components/guestBook-dialog";
-import GusetBook from "@/components/guestbook"
+import CommentDialog from "@/components/comment-dialog";
+import CommentList from "@/components/comment-list"
 
 export default function Home() {
   return (
@@ -98,8 +98,10 @@ export default function Home() {
         {/* <Intersect className="mt-8">
           <Calender />
         </Intersect> */}
-        <GuestBookDlg />
-        <GusetBook />
+        <Intersect className="mt-8 flex justify-center">
+          <CommentDialog />
+        </Intersect>
+        <CommentList />
       </section>
     </main>
   );

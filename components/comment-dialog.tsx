@@ -26,7 +26,7 @@ export default function guestBook() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(userInfo),
-    });
+    })
     console.log(userInfo)
     setOpen(false);
   };

@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
   try {
     if(req.method === "DELETE") {
-      const { id } = req.body;
+      const { id } = req.query;
       const result = await client.query('DELETE FROM users WHERE id = $1', [id]);
       return res.status(200).json(result);
     }
