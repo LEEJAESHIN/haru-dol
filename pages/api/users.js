@@ -26,9 +26,15 @@ export default async function handler(req, res) {
 
   try {
     if(req.method === "DELETE") {
-      const { id } = req.query;
-      const result = await client.query('DELETE FROM users WHERE id = $1', [id]);
-      return res.status(200).json(result);
+      const { id, password } = req.body
+      const dbPassword = await client.query('SELECT * FROM users WHERE id = $1;', [id]);
+      
+      if( password === dbPassword.rows[0].password) {
+        const result = await client.query('DELETE FROM users WHERE id = $1', [id]);
+        return res.status(200).json(result);
+      } else {
+        return res.status(401).json({ error: 'Invalid password' });
+      }
     }
   } catch (error) {
     console.error('Error deleting user:', error);

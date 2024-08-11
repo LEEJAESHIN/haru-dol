@@ -4,8 +4,9 @@ import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
+import axios from 'axios';
 
-export default function guestBook() {
+export default function guestBook({ getUsers }: any) {
   const [open, setOpen] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,15 +21,23 @@ export default function guestBook() {
       content: (form.elements.namedItem('content') as HTMLInputElement).value,
     };
 
-    await fetch('/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userInfo),
+    // await fetch('/api/users', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(userInfo),
+    // })
+    await axios.post(`/api/users`, userInfo)
+    .then(() => {
+      getUsers()
+      setOpen(false);
     })
-    console.log(userInfo)
-    setOpen(false);
+    .catch((err) => {
+      console.log(getUsers)
+      console.log(err)
+      alert("서비스 문제가 발생 하였습니다. 잠시 후 다시 시도 해 주세요")
+    })
   };
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -46,7 +55,7 @@ export default function guestBook() {
           </Dialog.Title>
           <form onSubmit={(e) => onSubmit(e)}>
             <label className='flex mb-2 font-serif'>
-              <input className="Input w-2/5 h-8 mr-2 pl-2" name='name' placeholder="이름" />
+              <input className="Input w-2/5 h-8 mr-2 pl-2" name='name' maxLength={9} placeholder="이름" />
               <input className="Input w-3/5 h-8 pl-2" name='password' type='password' placeholder="비밀번호" />
             </label>
             <label>

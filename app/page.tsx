@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="container">
       <section>
-        {/* <div className="font-serif_en text-center text-xl mt-20">1st birthday</div>
+        <div className="font-serif_en text-center text-xl mt-20">1st birthday</div>
         <div className="font-serif text-center text-xl text-blue-500">하루의 첫번째 생일</div>
         <div className='mt-10'>
           <img
@@ -93,15 +93,15 @@ export default function Home() {
               만차 시 제2주차장으로 안내해 드릴 수 있으니 여유롭게 도착하셔서 안내 받으시기를 바랍니다.
             </div>
           </div>
-        </Intersect> */}
+        </Intersect>
 
+        <Intersect className="my-20">
+          <CommentList />
+        </Intersect>
         {/* <Intersect className="mt-8">
           <Calender />
-        </Intersect> */}
-        <Intersect className="mt-8 flex justify-center">
-          <CommentDialog />
-        </Intersect>
-        <CommentList />
+          </Intersect> */}
+          <div className="w-full h-5 my-20"></div>
       </section>
     </main>
   );
