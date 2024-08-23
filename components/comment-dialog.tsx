@@ -5,6 +5,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 import axios from 'axios';
+import { sha512 } from 'js-sha512';
 
 export default function guestBook({ getUsers }: any) {
   const [open, setOpen] = useState(false);
@@ -14,36 +15,50 @@ export default function guestBook({ getUsers }: any) {
     console.log(e)
 
     const form = e.target as HTMLFormElement;
-
     const userInfo = {
       name: (form.elements.namedItem('name') as HTMLInputElement).value,
       password: (form.elements.namedItem('password') as HTMLInputElement).value,
       content: (form.elements.namedItem('content') as HTMLInputElement).value,
     };
+    if (!userInfo.content) return alert("내용을 입력해 주세요.")
+      
+    const isSecure = isSecureQuery(userInfo.content)
+    if (!isSecure) return alert("사용 할 수 없는 내용이 포함되어 있습니다.")
+    userInfo.password = sha512(userInfo.password)
 
-    // await fetch('/api/users', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(userInfo),
-    // })
     await axios.post(`/api/users`, userInfo)
-    .then(() => {
-      getUsers()
-      setOpen(false);
-    })
-    .catch((err) => {
-      console.log(getUsers)
-      console.log(err)
-      alert("서비스 문제가 발생 하였습니다. 잠시 후 다시 시도 해 주세요")
-    })
+      .then(() => {
+        getUsers()
+        setOpen(false);
+      })
+      .catch((err: any) => {
+        console.log(getUsers)
+        console.log(err)
+        alert("서비스 문제가 발생 하였습니다. 잠시 후 다시 시도 해 주세요")
+      })
   };
+
+  const isSecureQuery = (v: string) => {
+    if (v.includes("1’or’1’=‘1")) return false
+    if (v.includes("or 1=1 --")) return false
+    if (v.includes("or 2>1 --")) return false
+    if (v.includes("‘or 1 like 1 --")) return false
+    if (v.includes("‘)or’1’=1--")) return false
+    if (v.includes("1’ORDER BY 1 --")) return false
+    if (v.includes("<script>alert")) return false
+    if (v.includes("<body onload=alert")) return false
+    if (v.includes(`<body background="javascript:alert`)) return false
+    if (v.includes(`<img src=x onError=alert`)) return false
+    if (v.includes(`<iframe src="`)) return false
+    if (v.includes(`<link rel="stylesheet" href="javascript:alert`)) return false
+    if (v.length > 128) return false
+    return true
+  }
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button className="font-serif text-xs flex content-center gap-2 rounded-lg border border-gray-300 px-3 py-1">
-          <PaperPlaneIcon className='w-3 h-3 mt-1'/>
+          <PaperPlaneIcon className='w-3 h-3 mt-1' />
           보내기
         </button>
       </Dialog.Trigger>

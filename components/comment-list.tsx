@@ -5,6 +5,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import CommentDialog from "@/components/comment-dialog";
 import { Cross2Icon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import axios from 'axios';
+import { sha512 } from 'js-sha512';
 
 export default function guestbook() {
   const [users, setUsers] = useState([]);
@@ -48,7 +49,8 @@ export default function guestbook() {
       id,
       password: (form.elements.namedItem('password') as HTMLInputElement).value,
     };
-
+    userInfo.password = sha512(userInfo.password)
+    
     deleteUser(id, userInfo)
   }
 

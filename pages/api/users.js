@@ -1,4 +1,5 @@
 const { db } = require('@vercel/postgres');
+const bcrypt = require('bcrypt');
 
 export default async function handler(req, res) {
   const client = await db.connect();
@@ -16,6 +17,7 @@ export default async function handler(req, res) {
   try {
     if(req.method === "POST") {
       const { name, password, content } = req.body;
+
       const result = await client.query('INSERT INTO users (name, password, content) VALUES ($1, $2, $3)', [name, password, content]);
       return res.status(200).json(result);
     }
@@ -28,8 +30,8 @@ export default async function handler(req, res) {
     if(req.method === "DELETE") {
       const { id, password } = req.body
       const dbPassword = await client.query('SELECT * FROM users WHERE id = $1;', [id]);
-      
-      if( password === dbPassword.rows[0].password) {
+
+      if(password === dbPassword.rows[0].password) {
         const result = await client.query('DELETE FROM users WHERE id = $1', [id]);
         return res.status(200).json(result);
       } else {
