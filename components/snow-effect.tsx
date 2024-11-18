@@ -1,19 +1,19 @@
 "use client";
 
-import { useEffect } from 'react';
-import Snowflakes from 'magic-snowflakes';
+import React, { useEffect } from 'react';
 
-const SnowEffect = () => {
+const SnowEffect: React.FC = () => {
   useEffect(() => {
-    const snowflakes = new Snowflakes();
-    snowflakes.start();
+    if (typeof window === 'undefined') return;
 
-    return () => {
-      snowflakes.stop();
-    };
+    (async () => {
+      const MagicSnowflakes = (await import('magic-snowflakes')).default;
+      const snowflakes = new MagicSnowflakes({ color: '#fff', count: 50 });
+      return () => snowflakes.destroy();
+    })();
   }, []);
 
-  return null; // DOM 요소를 추가하지 않음
+  return null;
 };
 
 export default SnowEffect;
