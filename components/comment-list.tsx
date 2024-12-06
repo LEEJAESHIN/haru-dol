@@ -3,12 +3,13 @@
 import { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import CommentDialog from "@/components/comment-dialog";
-import { Cross2Icon, PaperPlaneIcon } from '@radix-ui/react-icons';
+import { Cross2Icon, CaretDownIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
 import axios from 'axios';
 import { sha512 } from 'js-sha512';
 
 export default function guestbook() {
   const [users, setUsers] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(10);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -54,13 +55,17 @@ export default function guestbook() {
     deleteUser(id, userInfo)
   }
 
+  const handlePlusList = () => {
+    setVisibleCount(visibleCount + 10);
+  }
+
   return (
     <div>
       <div className='flex justify-center'>
         <CommentDialog getUsers={getUsers} />
       </div>
       <div className='px-10 divide-y'>
-        {users.map((item: any, i) => (
+        {users.slice(0, visibleCount).map((item: any, i) => (
           <div key={item.id} className='font-serif py-3'>
             <div className='flex justify-between text-xs'>
               <div>
@@ -93,6 +98,9 @@ export default function guestbook() {
             <div className='text-xs pr-4 mt-1'>{item.content}</div>
           </div>
         ))}
+      </div>
+      <div className='flex justify-center mt-2'>
+        <CaretDownIcon onClick={handlePlusList}/>
       </div>
     </div>
   )

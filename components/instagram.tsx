@@ -4,9 +4,11 @@ import { Grid } from '@radix-ui/themes';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useEffect, useState } from 'react';
 import { cn } from '@/libs/utils';
+import { CaretDownIcon } from '@radix-ui/react-icons';
 
 export default function instagram() {
   const [images, setImages] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(9);
   const [currentImg, setCurrentImg] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -32,11 +34,15 @@ export default function instagram() {
     setCurrentImg(images.filter((el, i) => i === currentIndex - 1)[0])
     setCurrentIndex(currentIndex - 1)
   }
+
+  const handlePlusList = () => {
+    setVisibleCount(visibleCount + 10);
+  }
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <Grid columns="3" gap="1" width="auto">
-          {images.map((src, i) => (
+          {images.slice(0, visibleCount).map((src, i) => (
             <button
               key={i}
               onClick={() => openImg(src, i)}
@@ -70,6 +76,9 @@ export default function instagram() {
           </Dialog.Content>
         </Dialog.Overlay>
       </Dialog.Portal>
+      <div className='flex justify-center mt-4'>
+        <CaretDownIcon onClick={handlePlusList}/>
+      </div>
     </Dialog.Root>
   );
 }

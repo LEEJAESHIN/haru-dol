@@ -45,7 +45,7 @@ export default function calender() {
   };
   return (
     <div className="flex justify-center flex-col mx-8">
-      <div className="text-center text-md font-serif h-12 border-b-1 border-blue-100">2025년 1월 18일 토요일</div>
+      <div className="text-center text-md font-serif h-12 border-b-1 border-blue-100">2025년 1월 11일 토요일</div>
       <table>
         <thead>
           <tr>
