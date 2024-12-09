@@ -45,12 +45,12 @@ export default function guestBook({ getUsers }: any) {
     if (v.includes("‘or 1 like 1 --")) return false
     if (v.includes("‘)or’1’=1--")) return false
     if (v.includes("1’ORDER BY 1 --")) return false
-    if (v.includes("<script>alert")) return false
-    if (v.includes("<body onload=alert")) return false
-    if (v.includes(`<body background="javascript:alert`)) return false
-    if (v.includes(`<img src=x onError=alert`)) return false
+    if (v.includes("<script>")) return false
+    if (v.includes("<body onload=")) return false
+    if (v.includes(`<body background=`)) return false
+    if (v.includes(`<img src=`)) return false
     if (v.includes(`<iframe src="`)) return false
-    if (v.includes(`<link rel="stylesheet" href="javascript:alert`)) return false
+    if (v.includes(`<link rel="`)) return false
     if (v.length > 128) return false
     return true
   }

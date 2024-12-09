@@ -7,6 +7,7 @@ import CommentDialog from "@/components/comment-dialog";
 import CommentList from "@/components/comment-list"
 import SnowEffect from '@/components/snow-effect';
 import Address from "@/components/address";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -78,8 +79,9 @@ export default function Home() {
         <Intersect className="my-20">
           <CommentList />
         </Intersect>
-
-        <div className="w-full h-5 my-20"></div>
+        
+        <Footer />
+        <div className="w-full h-1 my-4"></div>
       </section>
     </main>
   );
