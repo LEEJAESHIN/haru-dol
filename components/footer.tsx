@@ -13,9 +13,11 @@ export default function footer() {
   }
 
   const kakaoInit = () => {
+    //@ts-ignore
     window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JS_KEY);
   };
   const kakaoSend = (image: { imageUrl: string; imageWidth: number; imageHeight: number }) => {
+    //@ts-ignore
     window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
