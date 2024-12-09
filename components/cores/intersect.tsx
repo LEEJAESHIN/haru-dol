@@ -20,16 +20,12 @@ export default function Intersect({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log(ref.current, "현재 ref");
-    console.log(className, "현재 className");
-    console.log(props, "현재 props");
     if (!ref.current) {
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        console.log(entry.isIntersecting);
         if (entry.isIntersecting) {
           ref.current?.setAttribute(type, '');
           observer.unobserve(entry.target);

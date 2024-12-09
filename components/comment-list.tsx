@@ -23,13 +23,11 @@ export default function guestbook() {
       setUsers(res.data);
     })
     .catch((err) => {
-      console.log("유저 데이터 가져오는데 실패하였습니다.")
+
     })
   };
 
   const deleteUser = async (id: number, userInfo: any) => {
-    console.log(userInfo)
-
     await axios.delete(`/api/users`, {
       data: userInfo
     })

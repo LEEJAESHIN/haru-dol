@@ -12,7 +12,6 @@ export default function guestBook({ getUsers }: any) {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(e)
 
     const form = e.target as HTMLFormElement;
     const userInfo = {
@@ -32,8 +31,6 @@ export default function guestBook({ getUsers }: any) {
         setOpen(false);
       })
       .catch((err: any) => {
-        console.log(getUsers)
-        console.log(err)
         alert("서비스 문제가 발생 하였습니다. 잠시 후 다시 시도 해 주세요")
       })
   };
