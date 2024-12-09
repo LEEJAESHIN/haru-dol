@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import CommentDialog from "@/components/comment-dialog";
-import { Cross2Icon, CaretDownIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
-import axios from 'axios';
+import { Cross2Icon, CaretDownIcon } from '@radix-ui/react-icons';
 import { sha512 } from 'js-sha512';
+import axios from 'axios';
+import dayjs from 'dayjs';
 
 export default function guestbook() {
   const [users, setUsers] = useState([]);
@@ -70,7 +71,7 @@ export default function guestbook() {
             <div className='flex justify-between text-xs'>
               <div>
                 <span className='text-gy-6'>{item.name}</span>
-                <span className='text-xxs ml-1'>2024.08.08</span>
+                <span className='text-xxs ml-1'>{dayjs(item.created_at).add(9, 'hour').format('YYYY-MM-DD HH:mm:ss')}</span>
               </div>
               <Dialog.Root open={open} onOpenChange={setOpen}>
                 <Dialog.Trigger asChild>
