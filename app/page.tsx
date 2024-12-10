@@ -85,7 +85,7 @@ export default function Home() {
         </Intersect>
 
         <Intersect className="mt-8">
-          <div className="text-center">
+          <div className="text-center mb-4">
             <div className="font-serif text-xs leading-7 mt-20">
               <span>
                 많은 관심과 사랑을 가져주신 덕분에<br />
@@ -95,9 +95,6 @@ export default function Home() {
               </span>
             </div>
           </div>
-        </Intersect>
-
-        <Intersect className="mt-6">
           <Calender />
         </Intersect>
 

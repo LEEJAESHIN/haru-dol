@@ -41,7 +41,7 @@ export default function BankAdd() {
             <div className="flex justify-between items-center text-xxs mt-1">
               <span>예금주 이재은</span>
               <a href="https://qr.kakaopay.com/FSpP2CgEa" target="_blank" rel="noopener noreferrer">
-                <img src="/images/Kakao_pay.png" width="63.34" height="63.34" alt="copy" />
+                <img src="/images/kakao_pay.png" width="63.34" height="63.34" alt="copy" />
               </a>
             </div>
           </Accordion.Content>
@@ -71,7 +71,7 @@ export default function BankAdd() {
             <div className="flex justify-between items-center text-xxs mt-1">
               <span>예금주 전하리</span>
               <a href="https://qr.kakaopay.com/Ej8Kp0VRS" target="_blank" rel="noopener noreferrer">
-                <img src="/images/Kakao_pay.png" width="63.34" height="63.34" alt="copy" />
+                <img src="/images/kakao_pay.png" width="63.34" height="63.34" alt="copy" />
               </a>
             </div>
           </Accordion.Content>
