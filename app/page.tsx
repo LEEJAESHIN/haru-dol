@@ -8,6 +8,7 @@ import CommentList from "@/components/comment-list"
 import SnowEffect from '@/components/snow-effect';
 import Address from "@/components/address";
 import Footer from "@/components/footer";
+import BankAdd from "@/components/bankadd";
 
 export default function Home() {
   return (
@@ -72,16 +73,35 @@ export default function Home() {
         <Intersect>
           <Address />
         </Intersect>
- 
+
         <div className="font-serif text-center mt-20">방명록</div>
         <Intersect className="my-20">
           <CommentList />
         </Intersect>
-        
-        {/* <Intersect className="mt-8">
-          <Calender />
-        </Intersect> */}
 
+        <div className="font-serif text-center mt-20">마음 전하실 곳</div>
+        <Intersect className="mt-8">
+          <BankAdd />
+        </Intersect>
+
+        <Intersect className="mt-8">
+          <div className="text-center">
+            <div className="font-serif text-xs leading-7 mt-20">
+              <span>
+                많은 관심과 사랑을 가져주신 덕분에<br />
+                건강하게 자라고 있습니다.<br />
+                생일 축하해 주신 모든 여러분께<br />
+                감사의 말씀을 전합니다.
+              </span>
+            </div>
+          </div>
+        </Intersect>
+
+        <Intersect className="mt-6">
+          <Calender />
+        </Intersect>
+
+        <div className="w-full h-1 mt-12"></div>
         <Footer />
         <div className="w-full h-1 my-1"></div>
       </section>
