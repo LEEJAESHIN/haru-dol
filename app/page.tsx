@@ -67,21 +67,23 @@ export default function Home() {
           <KaKaomap />
         </Intersect>
 
-        {/* <Intersect className="mt-8">
-          <Calender />
-        </Intersect> */}
+
 
         <Intersect>
           <Address />
         </Intersect>
-
+ 
         <div className="font-serif text-center mt-20">방명록</div>
         <Intersect className="my-20">
           <CommentList />
         </Intersect>
         
+        {/* <Intersect className="mt-8">
+          <Calender />
+        </Intersect> */}
+
         <Footer />
-        <div className="w-full h-1 my-4"></div>
+        <div className="w-full h-1 my-1"></div>
       </section>
     </main>
   );

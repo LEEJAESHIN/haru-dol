@@ -82,7 +82,9 @@ export default function footer() {
           />
         </button>
       </div>
-      <div className='font-serif text-xs text-gy-6 mt-2'>© 2024 jaeshin. All rights reserved.</div>
+      <div className='font-serif text-xxs text-gy-6 mt-2'>
+        © 2024 <span className='text-black' onClick={() => { location.href = 'https://github.com/LEEJAESHIN/haru-dol' }}>jaeshin.</span> All rights reserved.
+      </div>
     </div>
   )
 }

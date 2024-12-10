@@ -69,7 +69,7 @@ export default function guestbook() {
             <div className='flex justify-between text-xs'>
               <div>
                 <span className='text-gy-6'>{item.name}</span>
-                <span className='text-xxs ml-1'>{dayjs(item.created_at).add(9, 'hour').format('YYYY-MM-DD HH:mm:ss')}</span>
+                <span className='text-xxxs ml-1'>{dayjs(item.created_at).add(9, 'hour').format('YYYY-MM-DD HH:mm:ss')}</span>
               </div>
               <Dialog.Root open={open} onOpenChange={setOpen}>
                 <Dialog.Trigger asChild>
