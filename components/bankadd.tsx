@@ -15,7 +15,7 @@ export default function BankAdd() {
       <Accordion.Root
         type="single"
         collapsible
-        className="w-full max-w-md shadow-sm bg-white"
+        className="w-full shadow-sm bg-white"
       >
         {/* Item 1 */}
         <Accordion.Item value="item-1" className="border-b border-gray-200">

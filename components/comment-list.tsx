@@ -15,16 +15,17 @@ export default function guestbook() {
 
   useEffect(() => {
     getUsers();
+    axios.defaults.timeout = 10000;
   }, []);
 
   const getUsers = async () => {
     await axios.get('/api/users')
-    .then((res) => {
-      setUsers(res.data);
-    })
-    .catch((err) => {
+      .then((res) => {
+        setUsers(res.data);
+      })
+      .catch((err) => {
 
-    })
+      })
   };
 
   const deleteUser = async (id: number, userInfo: any) => {
@@ -36,8 +37,8 @@ export default function guestbook() {
         getUsers()
       })
       .catch((err) => {
-        if (err.response.status === 401) return alert("비밀번호가 일치하지 않습니다. 확인 해 주세요.")
-        return alert("서비스 문제가 발생 하였습니다. 잠시 후 다시 시도 해 주세요")
+        if (err.response.status === 401) return alert("비밀번호가 틀립니다! 😫")
+        return alert("서비스 문제가 발생 하였습니다. 잠시 후 다시 시도 해 주세요 🥲")
       });
   };
 
@@ -50,7 +51,7 @@ export default function guestbook() {
       password: (form.elements.namedItem('password') as HTMLInputElement).value,
     };
     userInfo.password = sha512(userInfo.password)
-    
+
     deleteUser(id, userInfo)
   }
 
@@ -99,7 +100,7 @@ export default function guestbook() {
         ))}
       </div>
       <div className='flex justify-center mt-2'>
-        <CaretDownIcon onClick={handlePlusList}/>
+        <CaretDownIcon onClick={handlePlusList} />
       </div>
     </div>
   )

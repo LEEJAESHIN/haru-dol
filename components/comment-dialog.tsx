@@ -20,18 +20,18 @@ export default function guestBook({ getUsers }: any) {
       content: (form.elements.namedItem('content') as HTMLInputElement).value,
     };
     if (!userInfo.content) return alert("내용을 입력해 주세요.")
-      
+
     const isSecure = isSecureQuery(userInfo.content)
-    if (!isSecure) return alert("사용 할 수 없는 내용이 포함되어 있습니다.")
+    if (!isSecure) return alert("사용 할 수 없는 내용이 포함되어 있습니다. 😵")
     userInfo.password = sha512(userInfo.password)
 
-    await axios.post(`/api/users`, userInfo)
+    await axios.post(`/api/users`, userInfo, { timeout: 10000 })
       .then(() => {
         getUsers()
         setOpen(false);
       })
       .catch((err: any) => {
-        alert("서비스 문제가 발생 하였습니다. 잠시 후 다시 시도 해 주세요")
+        alert("서비스 문제가 발생 하였습니다. 잠시 후 다시 시도 해 주세요 🥲")
       })
   };
 
