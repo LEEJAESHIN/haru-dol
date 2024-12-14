@@ -13,14 +13,14 @@ import BankAdd from "@/components/bankadd";
 export default function Home() {
   return (
     <main className="container">
-      <SnowEffect />
+      {/* <SnowEffect /> */}
       <section>
         <div className="font-serif_en text-center text-xl mt-20">1st birthday</div>
         <div className="font-serif text-center text-xl text-blue-500">하루의 첫번째 생일</div>
         <div className='mt-10'>
           <img
             className='w-full h-full pointer-events-none'
-            src="/images/2.jpg"
+            src="/images/1.jpg"
             alt=''
           />
         </div>
@@ -46,7 +46,7 @@ export default function Home() {
         <div className='mt-10'>
           <img
             className='w-full h-full pointer-events-none'
-            src="/images/3.jpg"
+            src="/images/2.jpg"
             alt=''
           />
         </div>

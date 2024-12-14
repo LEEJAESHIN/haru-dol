@@ -36,7 +36,7 @@ export default function instagram() {
   }
 
   const handlePlusList = () => {
-    setVisibleCount(visibleCount + 10);
+    setVisibleCount(visibleCount + 12);
   }
   return (
     <Dialog.Root>
