@@ -23,7 +23,7 @@ export default function footer() {
       content: {
         ...image,
         title: '이하루, 첫 생일 초대합니다.',
-        description: '01월 11일 오후 1시 \n판교, 루나드블랑',
+        description: '01월 11일 오후 12시 \n판교, 루나드블랑',
         link: {
           mobileWebUrl: URL,
           webUrl: URL,

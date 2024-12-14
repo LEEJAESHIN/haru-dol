@@ -34,7 +34,7 @@ export default function kakaomap() {
         marker.setMap(map);
 
         const iwContent = '<div style="padding: 20px; text-align:center; font-size:12px; min-width:220px;">' +
-          ' 2025년 1월 11일 토요일 오후 1시<br> 판교 루나드블랑 하루 돌잔치❤</div>',
+          ' 2025년 1월 11일 토요일 오후 12시<br> 판교 루나드블랑 하루 돌잔치❤</div>',
           iwRemoveable = true
 
         const infowindow = new window.kakao.maps.InfoWindow({

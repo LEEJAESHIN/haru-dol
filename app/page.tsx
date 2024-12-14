@@ -27,7 +27,7 @@ export default function Home() {
         <Intersect>
           <div className="text-center">
             <div className='font-serif mt-4 text-sm text-gy-6 leading-7'>
-              2025년 1월 11일 토요일 오후1시
+              2025년 1월 11일 토요일 오후12시
               <br />
               판교 루나드블랑
             </div>
