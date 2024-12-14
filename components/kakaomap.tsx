@@ -33,7 +33,7 @@ export default function kakaomap() {
         // 마커가 지도 위에 표시되도록 설정합니다
         marker.setMap(map);
 
-        const iwContent = '<div style="padding: 20px; text-align:center; font-size:12px; min-width:220px;">' +
+        const iwContent = '<div style="padding: 20px; text-align:center; font-size:12px; min-width:230px;">' +
           ' 2025년 1월 11일 토요일 오후 12시<br> 판교 루나드블랑 하루 돌잔치❤</div>',
           iwRemoveable = true
 

@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   const client = await db.connect();
   try {
     if(req.method === "GET") {
-      const result = await client.query('SELECT * FROM users;');
+      const result = await client.query('SELECT id, name, content, created_at FROM users;');
       const users = result.rows;
       return res.status(200).json(users);
     }
