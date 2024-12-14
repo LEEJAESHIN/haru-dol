@@ -21,10 +21,11 @@ export default function guestbook() {
   const getUsers = async () => {
     await axios.get('/api/users')
       .then((res) => {
-        setUsers(res.data);
+        const reversedUsers = res.data.reverse(); // 데이터의 순서를 뒤집음
+        setUsers(reversedUsers);
       })
       .catch((err) => {
-
+        //방명록 못가져와서 에러 알럿 시 사용자 불편 할 수 있어 우선 제외 
       })
   };
 
