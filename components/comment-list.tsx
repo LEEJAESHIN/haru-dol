@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
 export default function guestbook() {
   const [users, setUsers] = useState([]);
   const [visibleCount, setVisibleCount] = useState(10);
+  const [currentItem, setCurrentItem] = useState<any | null>(null); // 현재 열려 있는 item
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -74,7 +75,7 @@ export default function guestbook() {
                 <span className='text-xxxs ml-1'>{dayjs(item.created_at).format('YYYY-MM-DD HH:mm:ss')}</span>
               </div>
               <Dialog.Root open={open} onOpenChange={setOpen}>
-                <Dialog.Trigger asChild>
+                <Dialog.Trigger asChild onClick={() => { setOpen(true); setCurrentItem(item); }}>
                   <Cross2Icon className='cursor-pointer' />
                 </Dialog.Trigger>
                 <Dialog.Portal>
@@ -83,7 +84,7 @@ export default function guestbook() {
                     <Dialog.Title className="flex justify-between font-serif mb-4">
                       방명록 삭제
                     </Dialog.Title>
-                    <form onSubmit={(e) => onSubmit(e, item.id)}>
+                    <form onSubmit={(e) => onSubmit(e, currentItem.id)}>
                       <label className='flex mb-2 font-serif'>
                         <input className="Input w-full h-8 pl-2" name='password' type='password' placeholder="비밀번호" />
                       </label>
