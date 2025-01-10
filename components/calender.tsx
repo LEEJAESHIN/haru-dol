@@ -39,9 +39,9 @@ export default function calender() {
     const timeDifference = target.getTime() - now.getTime();
     const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)); // 밀리초를 일수로 변환
 
-    if(daysDifference - 1 === 0 ) return "오늘은 하루의 생일 입니다."
-    if(daysDifference - 1 < 0 ) return <span>하루의 생일이 <span className="text-bl-9">{daysDifference - 1}</span>일 지났습니다.</span>
-    return <span>하루의 생일이 <span className="text-bl-9">{daysDifference - 1}</span>일 남았습니다.</span>
+    if(daysDifference === 0 ) return <span>🎉 오늘은 <span className="text-bl-9">하루</span>의 생일 입니다. 🎉</span>
+    if(daysDifference < 0 ) return <span>하루의 생일이 <span className="text-bl-9">{Math.abs(daysDifference)}</span>일 지났습니다.</span>
+    return <span>하루의 생일이 <span className="text-bl-9">{daysDifference}</span>일 남았습니다.</span>
   };
   return (
     <div className="flex justify-center flex-col mx-8">
